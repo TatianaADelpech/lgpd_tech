@@ -1,0 +1,2 @@
+# lgpd_tech
+Este projeto busca identificar e levantar a problemática envolvendo divulgação de dados pessoais através de processos públicos pelos tribunais brasileiros, tomando como referência a identificação e a divulgação do CPF (Cadastro de Pessoas Físicas) durante o momento da qualificação da parte no processo e exposto para um público de mais de um milhão de pessoas, sem necessidade, quando possível acessar o processo em inteiro teor.
