@@ -16,16 +16,18 @@ pdfs = st.file_uploader(
     type= 'pdf',
     accept_multiple_files=True)
 
+pasta_raiz = pathlib.Path(".")
+
 for pdf in pdfs :
     if pdf != None :
         txt = pdf.name.replace("pdf", "txt")
-        file = pathlib.Path (txt)
+        file = pasta_raiz / txt
         if not file.exists():
-            parsed = parser.from_file(pdf.name)
-            with open(txt, "w", encoding="utf_8") as f:
+            parsed = parser.from_file(pasta_raiz / pdf.name)
+            with open(file, "w", encoding="utf_8") as f:
                 f.write(parsed["content"])
 
-        with open(txt, "r", encoding="utf_8") as f:
+        with open(file, "r", encoding="utf_8") as f:
             str_lawsuit = f.read()
 
         padrao1_cpf = "\d{3}\.\d{3}\.\d{3}-\d{2}"
