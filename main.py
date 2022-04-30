@@ -23,7 +23,7 @@ for pdf in pdfs :
         txt = pdf.name.replace("pdf", "txt")
         file = pasta_raiz / txt
         if not file.exists():
-            parsed = parser.from_file(pasta_raiz / pdf.name)
+            parsed = parser.from_file(str(pasta_raiz / pdf.name))
             with open(file, "w", encoding="utf_8") as f:
                 f.write(parsed["content"])
 
