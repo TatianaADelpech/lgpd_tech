@@ -16,7 +16,7 @@ pdfs = st.file_uploader(
     type= 'pdf',
     accept_multiple_files=True)
 
-pasta_raiz = pathlib.Path(".")
+pasta_raiz = pathlib.Path(".").absolute()
 
 for pdf in pdfs :
     if pdf != None :
