@@ -20,6 +20,8 @@ pasta_raiz = pathlib.Path(".").absolute()
 
 for pdf in pdfs :
     if pdf != None :
+        with open(pasta_raiz / pdf.name, "wb") as f:
+            f.write(pdf.getbuffer())
         txt = pdf.name.replace("pdf", "txt")
         file = pasta_raiz / txt
         if not file.exists():
