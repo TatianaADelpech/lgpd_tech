@@ -22,19 +22,19 @@ for pdf in pdfs :
     if pdf != None :
         with open(pasta_raiz / pdf.name, "wb") as f:
             f.write(pdf.getbuffer())
-        txt = pdf.name.replace("pdf", "txt")
-        file = pasta_raiz / txt
-        if not file.exists():
+        processo_txt = pdf.name.replace("pdf", "txt")
+        arquivo_processo_txt = pasta_raiz / processo_txt
+        if not arquivo_processo_txt.exists():
             parsed = parser.from_file(str(pasta_raiz / pdf.name))
-            with open(file, "w", encoding="utf_8") as f:
+            with open(arquivo_processo_txt, "w", encoding="utf_8") as f:
                 f.write(parsed["content"])
 
-        with open(file, "r", encoding="utf_8") as f:
-            str_lawsuit = f.read()
+        with open(arquivo_processo_txt, "r", encoding="utf_8") as f:
+            processo = f.read()
 
         padrao1_cpf = "\d{3}\.\d{3}\.\d{3}-\d{2}"
-        lista_padrao1 = re.findall(padrao1_cpf, str_lawsuit)
-        contagem_cpfs = Counter(lista_padrao1)
+        cpfs_encontrados = re.findall(padrao1_cpf, processo)
+        contagem_cpfs = Counter(cpfs_encontrados)
 
         st.markdown(f"##### nome do arquivo: {pdf.name}")
         st.text(f"Foram encontrados {len(contagem_cpfs)} CPF(s) diferente(s).")
